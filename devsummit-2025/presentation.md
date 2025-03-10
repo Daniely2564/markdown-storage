@@ -2,37 +2,63 @@
 
 ## Collaboration
 
-- Codeowners
-- Notify Teams Channel
-- Report Emails
-- Through PR comments
+Collaboration is the key to building successful testing. It involves having dedicated plans for what to test, how to share test results, monitor status, and share the knowledge across teams. Some of the key factors are:
 
-### Design testing
+### Collaborative test planning and review
 
-- Shared understanding of requirements: Encourage regular communication so both devs and QA know exactly what needs to be tested
-- Planning and design discussion to create test cases aligned with project goals and user stories. Some may need to focus on E2E and interaction, plus visual regression. Especially ArcGIS map components may require a lot of visual related testings.
-- Pull Request (PR) Reviews: Encourage testers to review PRs or at least check for updated tests. Devs can also review test steps to ensure coverage is accurate.
+- Shared understanding of requirements: Promote communication between devs and QA to know what needs to be tested
+- Plan and design discussion to create test cases aligned with project goals and user stories.
+  - Some may need to focus on E2E and interaction, plus visual regression. Especially, if it's involved with ArcGIS Maps SDK for Javascript, visual regression testing may also be very important.
+- PR Reviews. Encourage testers to review PRs or at least check for updated tests. Devs can also review test steps to ensure coverage is accurate.
 
-### Internal channel
+### Dedicated Teams channel for testing
 
-- Create an internal channel (Slack, Teams, etc.) or user group dedicated to ArcGIS testing practices.
-- Encourage open communication, code snippets, solutions to map rendering or performance issues, and success stories.
+- Create an internal channel (Slack, Teams, etc.) or user group dedicated to testing practices.
+- Encourage open communication, share successful stories, knowledge sharing, e.g. solutions to map rendering or performance issues.
 
-### Regression Testing on PRs
+### Test visibility across pipelines and regression validation
 
+- (Talk about where tests are chipped in. )
 - The PR changed codes must be validated that the regression tests are all successful.
 - Shared build pipelines: Everyone can see the status of tests in real-time (pass/fail) on each commit. This includes unit, integration, and end-to-end tests for ArcGIS-based features.
-- Automated alerts: If a test fails, relevant team members (devs or QA) get notified to resolve issues quickly. (Codeowners + PR Comments)
 
-### Documentation and best practices
+### Keeping code owners informed on test results
 
-- internal documentation: keep a section on how to set up local environments for testing, hwo to run mocks for ArcGIS services, and guidelines for E2E tests
+- Automated notification. If a test fails, relevant team members (devs or QA) get notified to resolve issues quickly. (Codeowners + PR Comments)
 
-### PR Checks
+### Documentation and sharing best practices
+
+- internal documentation: keep a section on how to set up local environments for testing, e.g. hwo to run mocks for ArcGIS services, and guidelines for E2E tests
 
 ## Automation
 
-What's the common release process.
+> TODO: Add some text in the Automation slide
+
+Here's the common process when it comes to continuous integration and continuous deployment.
+
+1. Initially, we pull the latest code from the dedicated branch using some sort of source code management, like Git or SVN (apache subversion).
+2. We then build the application. This may involve setting up
+   - dedicated environment. If you are using node, you will need nodejs and npm. If you are using java, you will need maven.
+   - Install required dependencies.
+   - And go through build process if there is any. Involve some minification, files mapping, tree shaking or some sort.
+3. After it's build, you the run testing, this may cover all aspects such as unit testing, integration testing, end-to-end testing or others.
+   - This may involve using testing frameworks like playwrights, selenium, vitest, or of your choice.
+   - This step may include things like notifying the dedicated QA, or developers, writing out emails for test results, and so on.
+4. For the last, we have deployment. This may be a dockerized container, or simply copy and pasting files, or directly hosting them on the machine itself.
+
+### Demo
+
+## Continuous Testing
+
+![alt text](image.png)
+
+Continuous Testing is a software testing practice where tests are executed automatically at every stage of the software development lifecycle. The goal is to identify defects early, ensure high software quality, and provide fast feedback to developers.
+
+The diagram as you see is similar, but the key idea is this happens on every stage of software development life cycle. Good example can be an event triggered upon every pull request. For every pull request committed, automation can be setup to validate the branch and ensure that there are no regressions.
+
+---
+
+Here's the demo on our example.
 
 Reference: https://www.techtarget.com/searchsoftwarequality/CI-CD-pipelines-explained-Everything-you-need-to-know
 
