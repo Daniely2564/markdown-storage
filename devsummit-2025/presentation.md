@@ -52,9 +52,15 @@ Here's the common process when it comes to continuous integration and continuous
 
 ![alt text](image.png)
 
-Continuous Testing is a software testing practice where tests are executed automatically at every stage of the software development lifecycle. The goal is to identify defects early, ensure high software quality, and provide fast feedback to developers.
+Continuous Testing is a software testing practice where automated tests are executed at every stage of the software development lifecycle. The primary goal is to identify defects early, maintain high software quality, and provide prompt feedback to developers—ensuring that changes do not introduce regressions.
 
-The diagram as you see is similar, but the key idea is this happens on every stage of software development life cycle. Good example can be an event triggered upon every pull request. For every pull request committed, automation can be setup to validate the branch and ensure that there are no regressions.
+The diagram as you see is similar to the previous CI/CD pipeline, but the key idea is testing occurs at every stage of the software development life cycle. Good example where this can be implemented is within pull request, where automated tests validate the branch as soon as a commit is pushed. This helps detect issues before they reach production, reducing the cost and effort of fixing defects later.
+
+At the end of the workflow, it should inform the author of the test results, ensuring the changes wouldn't cause regression. This proactive approach enables fast iteration, reliable code changes, and a stable release pipeline.
+
+#### Demo on Continuous testing
+
+We will dive into the actual code
 
 ---
 
